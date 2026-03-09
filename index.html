@@ -18,7 +18,7 @@
         }
 
         body {
-            background-color: #0b0d1e;       /* темно-синій, майже чорний */
+            background-color: #0b0d1e;
             color: #f0eef7;
             font-family: 'VT323', 'Courier New', monospace;
             font-size: 1.4rem;
@@ -29,7 +29,7 @@
             min-height: 100vh;
         }
 
-        /* ---- сітка як у Hotline Miami (лінії, що світяться) ---- */
+        /* сітка як у Hotline Miami */
         body::before {
             content: '';
             position: fixed;
@@ -41,7 +41,7 @@
             z-index: 1;
         }
 
-        /* ---- ефект "розгортки" VHS / сканлінії ---- */
+        /* VHS ефект */
         body::after {
             content: '';
             position: fixed;
@@ -59,7 +59,7 @@
             padding: 20px;
         }
 
-        /* ---------- типова неонова гама ---------- */
+        /* ---------- неонова гама ---------- */
         .neon-pink {
             color: #ff00c1;
             text-shadow: 0 0 5px #ff00c1, 0 0 10px #ff00c1, 0 0 20px #ff0080;
@@ -108,10 +108,10 @@
             font-family: 'VT323', monospace;
             text-decoration: none;
             color: #f0eef7;
-            transition: all 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
-        /* ---------- HEADER з навігацією ---------- */
+        /* ---------- HEADER ---------- */
         .header {
             display: flex;
             justify-content: space-between;
@@ -143,30 +143,13 @@
             border-radius: 0;
             text-transform: uppercase;
             background-color: rgba(0, 0, 0, 0.6);
-            transition: 0.2s;
         }
-        .nav a:hover /* Плавне збільшення та підсвічування */
-.nav a, .menu-card, .reserve-btn {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.nav a:hover,
-.menu-card:hover,
-.reserve-btn:hover {
-    transform: translateY(-3px) scale(1.02); /* легке підняття */
-    box-shadow: 0 0 25px currentColor, 0 5px 15px rgba(0,255,255,0.4);
-}
-
-/* Для більш «неонового» плавання можна додати безкінечну м'яку анімацію тільки для карток меню (опціонально) */
-.menu-card {
-    animation: float 4s infinite ease-in-out;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-}
+        .nav a:hover {
+            border-color: #00f0ff;
+            box-shadow: inset 0 0 10px #00f0ff, 0 0 15px #00f0ff;
+            background-color: rgba(255, 0, 193, 0.2);
+            transform: translateY(-3px) scale(1.05);
+        }
 
         /* ---------- hero ---------- */
         .hero {
@@ -177,7 +160,6 @@
             border: 3px solid #cc00ff;
             box-shadow: 0 0 30px #cc00ff, inset 0 0 20px #ff00c1;
             backdrop-filter: blur(1px);
-            position: relative;
         }
         .hero h1 {
             font-size: 3.5rem;
@@ -216,12 +198,17 @@
             padding: 1.5rem;
             box-shadow: 0 0 15px #ff00c1, inset 0 0 10px rgba(255, 0, 255, 0.3);
             backdrop-filter: blur(2px);
-            transition: 0.2s;
+            animation: float 4s infinite ease-in-out;
         }
         .menu-card:hover {
             border-color: #00f0ff;
             box-shadow: 0 0 25px #00f0ff, inset 0 0 15px cyan;
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
         }
         .menu-card h3 {
             font-size: 1.6rem;
@@ -248,6 +235,115 @@
             margin-bottom: 1rem;
             color: #ff00c1;
             filter: drop-shadow(0 0 8px magenta);
+        }
+
+        /* ---------- ТАБЛИЦЯ (нова) ---------- */
+        .table-section {
+            margin: 4rem 0;
+        }
+        .neon-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #00f0ff;
+            box-shadow: 0 0 20px #00f0ff;
+            font-size: 1.4rem;
+        }
+        .neon-table th {
+            background: rgba(255, 0, 193, 0.3);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            padding: 1rem;
+            border: 2px solid #ff00c1;
+            color: #f0f000;
+            text-shadow: 0 0 8px yellow;
+        }
+        .neon-table td {
+            padding: 1rem;
+            border: 1px solid #cc00ff;
+            text-align: center;
+        }
+        .neon-table tr:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transition: 0.3s;
+        }
+
+        /* ---------- ФОРМА (нова) ---------- */
+        .form-section {
+            margin: 4rem 0;
+        }
+        .neon-form {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid #ff00c1;
+            padding: 2rem;
+            box-shadow: 0 0 30px #ff00c1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00f0ff;
+            font-size: 1.6rem;
+            text-shadow: 0 0 5px cyan;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(10, 5, 30, 0.9);
+            border: 2px solid #cc00ff;
+            color: #f0f000;
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px #00f0ff;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+            text-transform: uppercase;
+        }
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .radio-group label {
+            display: inline;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+        .radio-group input {
+            width: auto;
+            margin-right: 0.3rem;
+        }
+        .form-btn {
+            background: transparent;
+            border: 3px solid #f0f000;
+            color: #f0f000;
+            padding: 1rem 2rem;
+            font-size: 1.8rem;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            box-shadow: 0 0 15px yellow;
+            width: 100%;
+            text-transform: uppercase;
+        }
+        .form-btn:hover {
+            background: #f0f000;
+            color: black;
+            box-shadow: 0 0 35px yellow;
+            transform: translateY(-3px);
         }
 
         /* ---------- контактна зона ---------- */
@@ -284,7 +380,6 @@
             font-family: 'Press Start 2P', cursive;
             cursor: pointer;
             box-shadow: 0 0 15px yellow;
-            transition: 0.2s;
             margin-top: 1rem;
             width: fit-content;
             text-transform: uppercase;
@@ -293,6 +388,7 @@
             background: #f0f000;
             color: black;
             box-shadow: 0 0 35px yellow;
+            transform: translateY(-3px);
         }
 
         /* ---------- футер ---------- */
@@ -304,38 +400,35 @@
             color: #a0a0d0;
         }
 
-        /* адаптація для маленьких екранів */
+        /* адаптація */
         @media (max-width: 700px) {
             h1 { font-size: 2rem; }
             .hero h1 { font-size: 2.5rem; }
             .nav { gap: 1rem; font-size: 1.4rem; flex-wrap: wrap; justify-content: center; }
             .header { flex-direction: column; gap: 1rem; }
         }
-
-        /* дрібниці: випадковий глітч-ефект при наведенні на деякі елементи */
-        .glitch-hover:hover {
-            animation: glitch 0.2s infinite;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- шапка з неоном -->
+        <!-- шапка -->
         <header class="header">
             <div class="header-logo">
                 <i class="fas fa-utensils" style="color: #ff00c1; text-shadow: 0 0 15px magenta; margin-right: 8px;"></i>
-                Greetings
+                Welcome
             </div>
             <nav class="nav">
                 <a href="#"><i class="fas fa-home"></i> Головна</a>
                 <a href="#menu"><i class="fas fa-hamburger"></i> Меню</a>
+                <a href="#table"><i class="fas fa-table"></i> Акції</a>
+                <a href="#form"><i class="fas fa-pen"></i> Бронь</a>
                 <a href="#contact"><i class="fas fa-map-pin"></i> Контакти</a>
             </nav>
         </header>
 
         <!-- Hero block -->
         <section class="hero">
-            <h1 class="glitch-hover">WRONK RESTAURANT</h1>
+            <h1>WRONK RESTAURANT</h1>
             <p class="neon-blue">⚡ 80s MIAMI VICE CUISINE ⚡</p>
             <span class="tag">ВІДЧУЙ СМАК МАЯМІ</span>
             <div style="margin-top: 2rem;">
@@ -345,94 +438,168 @@
             </div>
         </section>
 
-        <!-- Про нас – коротко -->
+        <!-- Про нас -->
         <section style="margin: 3rem 0;">
             <h2 class="neon-pink"><i class="fas fa-skull"></i> MAXIMUM TASTE <i class="fas fa-skull"></i></h2>
             <div style="font-size: 1.8rem; background: rgba(255,0,255,0.1); padding: 1.5rem; border-left: 8px solid #00f0ff;">
-                <p>Ласкаво просимо до Wronk — ресторану, де шалена енергетика поєднується з вишуканими стравами. Неонові вогні, сітчасті підлоги, синтвейв у динаміках і справжній смак Флориди 80-х. У нас ти або гість, або частина шоу.</p>
+                <p>Ласкаво просимо до Wronk — ресторану, де шалена енергетика Hotline Miami поєднується з вишуканими стравами. Неонові вогні, сітчасті підлоги, синтвейв у динаміках і справжній смак Флориди 80-х.</p>
                 <p style="color: #ff00c1; margin-top: 1rem;">● РЕТРО-АТМОСФЕРА ● ГОСТРІ СОУСИ ● КОКТЕЙЛІ З БЛИСКАВКАМИ ●</p>
             </div>
         </section>
 
-        <!-- Меню (картки) -->
+        <!-- Меню -->
         <section id="menu">
             <h2 class="neon-blue"><i class="fas fa-crown"></i> НЕОНОВЕ МЕНЮ</h2>
             <div class="menu-grid">
-                <!-- картка 1 -->
+                <!-- картки меню (без змін) -->
                 <div class="menu-card">
                     <div class="menu-icon"><i class="fas fa-dragon"></i></div>
                     <h3>✦ КРОВАВИЙ ПАЛЬМЕР ✦</h3>
                     <span class="price">$18</span>
                     <p>Бургер з двома яловичими котлетами, сиром, беконом, карамелізованою цибулею та фірмовим «гарячим» соусом. Подається з батат-фрі.</p>
                 </div>
-                <!-- картка 2 -->
                 <div class="menu-card">
                     <div class="menu-icon"><i class="fas fa-fish"></i></div>
                     <h3>⚡ МАХІ-МАХІ VICE ⚡</h3>
                     <span class="price">$24</span>
-                    <p>Свіжий махі-махі на грилі, пюре з таро, соус з маракуї та кінзи. Присвячено детективам Крокету й Таббсу.</p>
+                    <p>Свіжий махі-махі на грилі, пюре з таро, соус з маракуї та кінзи.</p>
                 </div>
-                <!-- картка 3 -->
                 <div class="menu-card">
                     <div class="menu-icon"><i class="fas fa-pepper-hot"></i></div>
                     <h3>🔥 ПАЛАЮЧІ КРЕВЕТКИ 🔥</h3>
                     <span class="price">$21</span>
-                    <p>Креветки в апельсиново-чилі глазурі з підсмаженим кунжутом, рисом «жасмин» та ананасовим сальсою.</p>
+                    <p>Креветки в апельсиново-чилі глазурі з підсмаженим кунжутом.</p>
                 </div>
-                <!-- картка 4 -->
                 <div class="menu-card">
                     <div class="menu-icon"><i class="fas fa-glass-martini-alt"></i></div>
                     <h3>✦ СИНТВЕЙВ КОКТЕЙЛЬ ✦</h3>
                     <span class="price">$14</span>
-                    <p>Наш фірмовий напій: горілка, малиновий лікер, лайм, спрайт і сяючий кубик льоду (їстівний глітер). Світиться в ультрафіолеті!</p>
+                    <p>Горілка, малиновий лікер, лайм, спрайт і сяючий кубик льоду.</p>
                 </div>
             </div>
-            <!-- додаткова ремарка в стилі гри -->
-            <p style="text-align: right; font-size: 1.6rem; color: #ff00c1; border-bottom: 1px dashed cyan; padding-bottom: 0.5rem;">
-                <i class="fas fa-cassette"></i>   ЗАМОВЛЯЙ – ПОКИ МУЗИКА ГРАЄ   <i class="fas fa-cassette"></i>
-            </p>
         </section>
 
-        <!-- Контакти + години роботи -->
+        <!-- НОВА ТАБЛИЦЯ (спеціальні пропозиції) -->
+        <section id="table" class="table-section">
+            <h2 class="neon-purple"><i class="fas fa-table"></i> НІЧНІ АКЦІЇ</h2>
+            <table class="neon-table">
+                <thead>
+                    <tr>
+                        <th>ДЕНЬ ТИЖНЯ</th>
+                        <th>АКЦІЯ</th>
+                        <th>ЗНИЖКА</th>
+                        <th>ГОДИНИ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ПОНЕДІЛОК</td>
+                        <td>2 коктейлі = 1+1</td>
+                        <td>50% на другий</td>
+                        <td>20:00 - 00:00</td>
+                    </tr>
+                    <tr>
+                        <td>СЕРЕДА</td>
+                        <td>Бургер + напій</td>
+                        <td>30% на комплект</td>
+                        <td>18:00 - 23:00</td>
+                    </tr>
+                    <tr>
+                        <td>П'ЯТНИЦЯ</td>
+                        <td>Всі морепродукти</td>
+                        <td>25% на другу страву</td>
+                        <td>22:00 - 02:00</td>
+                    </tr>
+                    <tr>
+                        <td>СУБОТА</td>
+                        <td>Неонова вечірка</td>
+                        <td>Вхідний коктейль безкоштовно</td>
+                        <td>23:00 - 05:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- НОВА ФОРМА для бронювання -->
+        <section id="form" class="form-section">
+            <h2 class="neon-pink"><i class="fas fa-pen-fancy"></i> ЗАБРОНЮВАТИ СТІЛ</h2>
+            <form class="neon-form" onsubmit="alert('Бронювання відправлено! Ми передзвонимо для підтвердження.'); return false;">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> ІМ'Я:</label>
+                    <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> ТЕЛЕФОН:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date"><i class="fas fa-calendar"></i> ДАТА:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time"><i class="fas fa-clock"></i> ЧАС:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests"><i class="fas fa-users"></i> КІЛЬКІСТЬ ГОСТЕЙ:</label>
+                    <select id="guests" name="guests">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6+">6+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>ТИП СТОЛИКА:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="table" value="standard" checked> Звичайний</label>
+                        <label><input type="radio" name="table" value="vip"> VIP (неонова зона)</label>
+                        <label><input type="radio" name="table" value="terrace"> Тераса</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments"><i class="fas fa-comment"></i> ОСОБЛИВІ ПОБАЖАННЯ:</label>
+                    <textarea id="comments" name="comments" rows="3" placeholder="Наприклад: день народження, алергія..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-btn"><i class="fas fa-skull"></i> ЗАБРОНЮВАТИ <i class="fas fa-skull"></i></button>
+            </form>
+        </section>
+
+        <!-- Контакти -->
         <section id="contact" class="contact-section">
             <div class="contact-info">
                 <h3 class="neon-yellow"><i class="fas fa-map-marked-alt"></i> КОНТАКТИ</h3>
-                <p><i class="fas fa-location-dot neon-pink"></i>  ​​вул. Сансет-драйв, 1986, Маямі (підвал клубу «Неон»)</p>
-                <p><i class="fas fa-phone neon-blue"></i>  +1 (305) 555-80-80</p>
-                <p><i class="fas fa-envelope neon-purple"></i>  wronk@hotline.miami</p>
-                <p><i class="fab fa-instagram neon-pink"></i>  @wronk_restaurant</p>
+                <p><i class="fas fa-location-dot neon-pink"></i> вул. Сансет-драйв, 1986, Маямі</p>
+                <p><i class="fas fa-phone neon-blue"></i> +1 (305) 555-80-80</p>
+                <p><i class="fas fa-envelope neon-purple"></i> wronk@hotline.miami</p>
+                <p><i class="fab fa-instagram neon-pink"></i> @wronk_restaurant</p>
             </div>
             <div class="hours">
                 <h3 class="neon-yellow"><i class="fas fa-clock"></i> ГОДИНИ РОБОТИ</h3>
                 <p><span class="neon-blue">ПН–ЧТ:</span> 18:00 – 02:00</p>
                 <p><span class="neon-blue">ПТ–СБ:</span> 20:00 – 05:00</p>
-                <p><span class="neon-blue">НД:</span>  — вихідний</p>
-                <button class="reserve-btn" onclick="alert('🔴 ЗАМОВЛЕННЯ ПРИЙНЯТО! Залишайтеся на лінії... ')"><i class="fas fa-skull"></i> ЗАБРОНЮВАТИ СТІЛ <i class="fas fa-skull"></i></button>
+                <p><span class="neon-blue">НД:</span> вихідний</p>
+                <button class="reserve-btn" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-skull"></i> ШВИДКА БРОНЬ <i class="fas fa-skull"></i></button>
             </div>
         </section>
 
-        <!-- футер з піксельним підписом -->
+        <!-- футер -->
         <footer class="footer">
-            <p>© 1992 WRONK RESTAURANT · УСІ ПРАВА ЗАХИЩЕНО, НАВІТЬ ВІД РУСНІ</p>
-            <p style="font-size: 1rem; color: #5555aa;">site created with <i class="fas fa-heart" style="color:#ff00c1;"></i> and cassette fumes · hotline miami tribute</p>
+            <p>© 2025 WRONK RESTAURANT · УСІ ПРАВА ЗАХИЩЕНО</p>
+            <p style="font-size: 1rem; color: #5555aa;">site created with <i class="fas fa-heart" style="color:#ff00c1;"></i> and cassette fumes</p>
             <div style="margin-top: 0.5rem;">
                 <i class="fas fa-crown neon-pink"></i>   <i class="fas fa-crown neon-blue"></i>   <i class="fas fa-crown neon-purple"></i>
             </div>
         </footer>
     </div>
-
-    <!-- маленька інтерактивність: додаємо руху навігації -->
-    <script>
-        // просто додаємо клас glitch-hover до всіх елементів навігації для забаганки
-        document.querySelectorAll('.nav a, .menu-card, .reserve-btn').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.animation = 'glitch 0.2s infinite';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.animation = 'none';
-            });
-        });
-        // фонове "дихання" неонових ліній – нічого серйозного, просто настрій
-    </script>
 </body>
 </html>
